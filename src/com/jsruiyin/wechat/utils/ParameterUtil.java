@@ -9,69 +9,71 @@ import java.net.URLEncoder;
 
 public class ParameterUtil {
         //参数
-        public static final String SUCCESS = "SUCCESS";
-        public static final String FAIL = "FAIL";
-        public static final String ORDERPAID = "ORDERPAID";
-        public static final String SYSTEMERROR = "SYSTEMERROR";
-        public static final String TTX = "TTX";
+        public static final String SUCCESS = PropertyUtil.get("SUCCESS");
+        public static final String FAIL = PropertyUtil.get("FAIL");
+        public static final String ORDERPAID = PropertyUtil.get("ORDERPAID");
+        public static final String SYSTEMERROR = PropertyUtil.get("SYSTEMERROR");
+        public static final String TTX = PropertyUtil.get("TTX");
+        public static final String CS = PropertyUtil.get("CS");
+
         //域名指向
-        public static final String URL_SESSION = "http://shwx.huhuschool.com";
+        public static final String URL_SESSION = PropertyUtil.get("URL_SESSION");
+        //活动指向
+        public static final String URL_WX = PropertyUtil.get("URL_WX");
+        //项目完整路径 wx
+        public static final String URL_SESSION_WX = URL_SESSION+URL_WX;
         //微信项目名称 显网
-        //public static final String URL_WEB = "/weChatXw";
-        //微信项目名称 测试
-        public static final String URL_WEB = "/weChat";
+        public static final String URL_WEB = PropertyUtil.get("URL_WEB");
+        //微信工具项目路径
+        public static final String URL_SESSION_WEB = URL_SESSION+URL_WEB;
         //泗洪页面项目 名称
-        //public static final String URL_BANK = "/shwx";
-        //泗洪页面项目 测试
-        public static final String URL_BANK = "/shwxCs";
+        public static final String URL_BANK = PropertyUtil.get("URL_BANK");
         //泗洪活动项目地址 线网
-        //public static final String URL_PAYMENT = "/payment";
-        //
-        //泗洪活动项目地址 测试
-        public static final String URL_PAYMENT = "/payment_cs";
+        public static final String URL_PAYMENT = PropertyUtil.get("URL_PAYMENT");
         //活动主路径
-        public static final String URL_PAYMENT_INDEX = "/html/index.html";
+        public static final String URL_PAYMENT_INDEX = PropertyUtil.get("URL_PAYMENT_INDEX");
         //图片地址
-        public static final String URL_IMG = "/img/news/imgs";
+        public static final String URL_IMG = PropertyUtil.get("URL_IMG");
         //pay
-        public static final String API_PASSWORD = "zGwVjPqaXakbAxQh4umrrfUfqIEK5DXv";
-        public static final String BUSINESS_NUMBER = "1466639502";
-        //线网
-//        public static final String API_PASSWORD = "zGwVjPqaXakbAxQh4umrrfUfqIEK5DXa";
-//        public static final String BUSINESS_NUMBER = "1314457401";
+        public static final String API_PASSWORD = PropertyUtil.get("API_PASSWORD");
+        public static final String BUSINESS_NUMBER = PropertyUtil.get("BUSINESS_NUMBER");
 
-        //测试
-        public static final String TO_KEN = "376028_d";
-        public static final String APP_ID = "wx1a4e3c5b7c5c1619";
-        public static final String APPSECRET = "dc3b74380cd13ce5f005419b69d7c529";
+        //支付地址
+        public static final String URL_PAY = PropertyUtil.get("URL_PAY");
+        public static final String URL_PAY_INDEX = PropertyUtil.get("URL_PAY_INDEX");
+        public static final String URL_PAY_BACK = PropertyUtil.get("URL_PAY_BACK");
 
 
-//        //显网
-//        public static final String TO_KEN = "376028_b";
-//        public static final String APP_ID = "wxa7396c52420a4806";
-//        public static final String APPSECRET = "a94d7d313f732e73cb44d825910c5216";
+        //退款接口
+        public static final String REFUND_URL = PropertyUtil.get("REFUND_URL");
+
+        public static final String TO_KEN = PropertyUtil.get("TO_KEN");
+        public static final String APP_ID = PropertyUtil.get("APP_ID");
+        public static final String APPSECRET = PropertyUtil.get("APPSECRET");
+
 
         //功能路径 页面地址
-        public static final String INDEX = "/index.html";
+        public static final String INDEX = PropertyUtil.get("INDEX");
 
-        public static final String GN_URL = "/views/pages";
+        public static final String GN_URL = PropertyUtil.get("GN_URL");
         //电子银行业务
-        public static final String DZYHYW = "/electronic/electronic_ bank.html";
+        public static final String DZYHYW = PropertyUtil.get("DZYHYW");
         //贷款业务
-        public static final String DKYW = "/loan/loan_business.html";
+        public static final String DKYW = PropertyUtil.get("DKYW");
         //存款业务
-        public static final String CKYW = "/deposit/deposit_service.html";
+        public static final String CKYW = PropertyUtil.get("CKYW");
         //理财业务
-        public static final String LCYW = "/financial services/financing.html";
+        public static final String LCYW = PropertyUtil.get("LCYW");
 
 
 
 
-        public static final String TITLE = "欢迎访问微信平台";
-        public static final String DESCRIPTION = "请选择菜单或输入您想要了解的内容";
+        public static final String TITLE = PropertyUtil.get("TITLE");
+        public static final String DESCRIPTION = PropertyUtil.get("DESCRIPTION_1");
         public static final String PIC_URL = ImgUtil.getZy();
         public static final String URL = URL_SESSION+URL_BANK+INDEX;
         public static final String LOGIN_URL = URL_SESSION+URL_WEB+"/shBank/wxLogin";
+        //获取openId 跳转地址
         public static final String GET_URL = URL_SESSION+URL_WEB+"/shBank/getOpenId?redirectUrl=";
         public static final String CLICK = "click";
         public static final String VIEW = "view";
@@ -127,14 +129,25 @@ public class ParameterUtil {
         public static final String ACTIVITY_KEY = "9";
 
 
-        public static final String ACTIVITY_0 = "我的活动";
-        public static final String ACTIVTIY_PIC_URL_0 = URL_SESSION+"/shyhWx/image/draw-bg.jpg";
-        public static final String ACTIVITY_URL_0 = URL_SESSION+"/wx-marketing-activities/caishendao/index.html";
+//        public static final String ACTIVITY_0 = "我的活动";
+//        public static final String ACTIVTIY_PIC_URL_0 = URL_SESSION+"/shyhWx/image/draw-bg.jpg";
+//        public static final String ACTIVITY_URL_0 = URL_SESSION+"/wx-marketing-activities/caishendao/index.html";
 
 
 
-        public static final String ACTIVITY_1 = "七夕抢红包";
-        public static final String ACTIVTIY_PIC_URL_1 = URL_SESSION+URL_BANK+ParameterUtil.URL_IMG+"/draw-bg.jpg";
+        public static final String ACTIVITY_1 = PropertyUtil.get("ACTIVITY_1");
+        public static final String ACTIVTIY_PIC_URL_1 = URL_SESSION +
+                                    URL_BANK +
+                                    ParameterUtil.URL_IMG +
+                                    PropertyUtil.get("DRAW_LOGO");
+
+        public static final String ACTIVITY_ZQHQ =  ParameterUtil.URL_SESSION +
+                                                    ParameterUtil.URL_WX +
+                                                    ParameterUtil.URL_PAYMENT +
+                                                    ParameterUtil.URL_PAYMENT_INDEX +
+                                                    PropertyUtil.get("QUESTION_MARK") +
+                                                    PropertyUtil.get("ACTIVITY_PARAMETER");
+
         public static final String ACTIVITY_URL_1 =
                 "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+APP_ID
                         + "&redirect_uri="+URLEncoder.encode(LOGIN_URL)
@@ -143,7 +156,42 @@ public class ParameterUtil {
                         + "&state="+WeixinUtil.generateOrderSN()+"#wechat_redirect";
 
 
-        //public static final String ACTIVITY_URL_1 = "";
+    public static final String GETACTIVITYURL =
+                 ParameterUtil.URL_SESSION +
+                ParameterUtil.URL_WX +
+                ParameterUtil.URL_PAYMENT +
+                PropertyUtil.get("URL_PAYMENT_INDEX_FU") +
+                "?openId=OPENID"+
+                "&nickname=NICKNAME"+
+                "&state=STATE"+
+                "&code=001";
+
+
+
+
+
+    //***********国庆绑卡*****//
+    public static final String ACTIVITY_USER_TEXT = "我的绑卡";
+    public static final String ACTIVITY_PIC_URL = URL_SESSION +
+                                                    URL_BANK +
+                                                    ParameterUtil.URL_IMG +
+                                                    PropertyUtil.get("CARD_LOGO");
+    //绑卡路径
+    //"http://shwx.huhuschool.com/wx/answer/html/info.html?openId=";
+    public static final String ACTIVITY_URL =
+                                    PropertyUtil.get("URL_SESSION") +
+                                    PropertyUtil.get("URL_WX") +
+                                    PropertyUtil.get("URL_PAYMENT") +
+                                    PropertyUtil.get("CREATE_CARD") +
+                                    PropertyUtil.get("QUESTION_MARK") +
+                                    PropertyUtil.get("PARAMETER_OPENID") + "=";
+
+    public static final String ACTIVITY_GET_BANK_USER_URL =
+            "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+APP_ID
+                    + "&redirect_uri="+URLEncoder.encode(GET_URL+ACTIVITY_URL)
+                    + "&response_type=code"
+                    + "&scope="+SNSAPI_BASE
+                    + "&state=STATE#wechat_redirect";
 
 
 
@@ -190,9 +238,11 @@ public class ParameterUtil {
 
 
         //***********天天学**********//
-        public static final String TTX_TEXT = "微信天天学";
+        public static final String TTX_TEXT = PropertyUtil.get("TTX_TEXT");
         public static final String TTX_PIC_URL = ImgUtil.getTtx();
-        public static final String TTX_URL = "http://shwx.huhuschool.com/wx/answer/html/home.html?openId=";
+        public static final String TTX_URL = PropertyUtil.get("URL_SESSION") +
+                                             PropertyUtil.get("URL_WX") +
+                                             PropertyUtil.get("TTX_URL") ;
         public static final String GET_TTX_URL =
                 "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+APP_ID
                         + "&redirect_uri="+URLEncoder.encode(GET_URL+TTX_URL)
@@ -203,9 +253,11 @@ public class ParameterUtil {
 
 
         //***********行内员工绑卡*****//
-        public static final String BANK_USER_TEXT = "行内员工绑定";
-        public static final String BANK_PIC_URL = "http://shwx.huhuschool.com/wx/answer/html/info.html?openId=";
-        public static final String BANK_URL = "http://shwx.huhuschool.com/wx/answer/html/info.html?openId=";
+        public static final String BANK_USER_TEXT = PropertyUtil.get("BANK_USER_TEXT");
+        public static final String BANK_PIC_URL = ImgUtil.getTtx();
+        public static final String BANK_URL = PropertyUtil.get("URL_SESSION") +
+                                                PropertyUtil.get("URL_WX") +
+                                                PropertyUtil.get("BANK_URL") ;
         public static final String GET_BANK_USER_URL =
                 "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+APP_ID
                         + "&redirect_uri="+URLEncoder.encode(GET_URL+BANK_URL)

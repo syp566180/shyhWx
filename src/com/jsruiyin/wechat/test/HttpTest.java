@@ -1,5 +1,6 @@
 package com.jsruiyin.wechat.test;
 
+import com.jsruiyin.wechat.utils.HttpUtil;
 import com.jsruiyin.wechat.utils.MD5Util;
 import com.jsruiyin.wechat.utils.PayUtil;
 import com.jsruiyin.wechat.utils.WeixinUtil;
@@ -49,7 +50,7 @@ public class HttpTest {
         String rurl = "http://shwx.huhuschool.com/payment/html/hongbao.html";                 //回调地址 红包页面
         url = url+"?uid="+uid+"&type="+type+"&money="+creatMoney+"&orderid="+orderid+"&reqtick="+reqtick+"&sign="+sign+"&title="+title+"&name="+name+"&wishing="+wishing+"&rurl="+rurl;
         System.out.println("创建红包路径.."+url);
-        String responseContent = PayUtil.getHttp(url);
+        String responseContent = HttpUtil.getHttp(url);
         Map<String,String> map = new HashMap<>();
         map.put("data",responseContent);
         net.sf.json.JSONObject jsStr = net.sf.json.JSONObject.fromObject(responseContent);

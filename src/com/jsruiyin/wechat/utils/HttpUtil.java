@@ -6,14 +6,19 @@
 package com.jsruiyin.wechat.utils;
 
 import net.sf.json.JSONObject;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.*;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -81,7 +86,7 @@ public class HttpUtil {
 
 
 
-    //发起微信支付请求
+    //发起httpsRequest请求
     public static String httpsRequest(String requestUrl, String requestMethod, String outputStr) {
         try {
             URL url = new URL(requestUrl);
@@ -125,11 +130,36 @@ public class HttpUtil {
     }
 
 
-
-
-
-
-
-
-
+    /**
+     * http 请求
+     * @param url
+     * @return
+     */
+    public static String getHttp(String url){
+        CloseableHttpClient client = HttpClients.createDefault();
+        HttpGet get = new HttpGet(url);
+        String responseContent = null; // 响应内容
+        CloseableHttpResponse response= null;
+        try {
+            response = client.execute(get);
+            HttpEntity entity = response.getEntity();// 响应体
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {// 正确返回
+                responseContent = EntityUtils.toString(entity, "UTF-8");
+            }
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (response != null)
+                    response.close();
+                if (client != null)
+                    client.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return responseContent;
+    }
 }

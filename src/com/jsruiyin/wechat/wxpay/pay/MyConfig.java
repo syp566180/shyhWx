@@ -1,6 +1,7 @@
 package com.jsruiyin.wechat.wxpay.pay;
 
 import com.jsruiyin.wechat.utils.ParameterUtil;
+import com.jsruiyin.wechat.utils.PropertyUtil;
 import com.jsruiyin.wechat.wxpay.sdk.IWXPayDomain;
 import com.jsruiyin.wechat.wxpay.sdk.WXPayConfig;
 import java.io.*;
@@ -61,7 +62,7 @@ public class MyConfig extends WXPayConfig {
     /**微信支付api证书路径*/
     //public static final String CERT_PATH = "/usr/share/nginx/html/apiclient_cert.p12"；
 
-    public static final String CERT_PATH = "/usr/share/nginx/html/apiclient_cert.p12";
+    public static final String CERT_PATH = PropertyUtil.get("CERT_PATH");
     /**微信统一下单url*/
     public static final String UNIFIED_ORDER_URL = "https://api.mch.weixin.qq.com/pay/unifiedorder";
 
@@ -94,12 +95,6 @@ public class MyConfig extends WXPayConfig {
 
     /**第三方微信红包发送接口*/
     public static final String GET_RED = "http://www.yaoyaola.cn/index.php/exapi/gethb";
-
-    /** 天天学系统路径 */
-    public static final String TTX_URL = "http://weixin.shnsh.net/WxyhServer_old/ExamSystem/Init/Loader?mpId=rcb&ticks=636657169871328510&xp=8kpmv4CVF74WcjKV%2cy1VDr0F5p9wptfZZ0WJfiAozGXYUFNpkoaLxLroa6eAGeqX";
-
-    /** 行内绑卡 */
-    public static final String BANK_URL = "";
 
 
 }

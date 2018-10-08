@@ -15,42 +15,23 @@ import java.io.IOException;
  * Created by chenyuping on 2018/8/7.
  */
 public class PayUtil {
-
     //支付方式
-    public static final String CFT = "CFT";   //零钱包
+    public static final String CFT = PropertyUtil.get("CFT");   //零钱包
+    //借记卡
+    public static final String JSNX_CREDIT = PropertyUtil.get("JSNX_CREDIT");
     //贷记卡
-    public static final String JSNX_CREDIT = "JSNX_CREDIT";  //泗洪农商行贷记卡
-    //社保卡
-    //public static final String
+    public static final String JSNX_DEBIT = PropertyUtil.get("JSNX_DEBIT");
+    //
+    public static final String JSNX = PropertyUtil.get("JSNX");  //泗洪农商行贷记卡
+    //是否校验
+    public static final String IS_BANK_CODE = PropertyUtil.get("IS_BANK_CODE");
 
-    //方法
-    public static String getHttp(String url){
-        CloseableHttpClient client = HttpClients.createDefault();
-        HttpGet get = new HttpGet(url);
-        String responseContent = null; // 响应内容
-        CloseableHttpResponse response= null;
-        try {
-            response = client.execute(get);
-            HttpEntity entity = response.getEntity();// 响应体
-            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {// 正确返回
-                responseContent = EntityUtils.toString(entity, "UTF-8");
-            }
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (response != null)
-                    response.close();
-                if (client != null)
-                    client.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public boolean getIsBankCode(){
+        boolean flog = false;
+        if("0".equals(IS_BANK_CODE)){
+            flog = true;
         }
-
-        System.out.println("结果："+responseContent);
-        return responseContent;
+        return flog;
     }
+
 }

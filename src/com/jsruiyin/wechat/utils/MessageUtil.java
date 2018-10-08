@@ -44,6 +44,10 @@ public class MessageUtil {
     public static final String RESP_MESSAGE_TYPE_VIDEO = "video";
     public static final String RESP_MESSAGE_TYPE_MUSIC = "music";
     public static final String RESP_MESSAGE_TYPE_NEWS = "news";
+
+
+
+
     public static XStream xstream = new XStream(new XppDriver() {
         public HierarchicalStreamWriter createWriter(Writer out) {
             return new PrettyPrintWriter(out) {
@@ -116,7 +120,8 @@ public class MessageUtil {
 
     public static String messageToXml(NewsMessage newsMessage) {
         xstream.alias("xml", newsMessage.getClass());
-        xstream.alias("item", (new Article()).getClass());
+        //xstream.alias("item", (new Article()).getClass());
+        xstream.alias("item", Article.class);
         return xstream.toXML(newsMessage);
     }
 }

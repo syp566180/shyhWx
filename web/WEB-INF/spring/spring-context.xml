@@ -22,6 +22,15 @@
 
     <bean id="newsMessage" class="com.jsruiyin.wechat.message.resp.NewsMessage"/>
 
+    <!--<bean id="propertyConfigurer" class="com.hafiz.www.util.PropertyConfigurer">-->
+        <!--<property name="ignoreUnresolvablePlaceholders" value="true"/>-->
+        <!--<property name="ignoreResourceNotFound" value="true"/>-->
+        <!--<property name="locations">-->
+            <!--<list>-->
+                <!--<value>classpath:jdbc.properties</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
 
 
 

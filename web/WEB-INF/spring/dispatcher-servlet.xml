@@ -18,58 +18,9 @@
         <property name="messageConverters">
             <list>
                 <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
-                <!--   <ref bean="mappingJacksonHttpMessageConverter" />-->
             </list>
         </property>
     </bean>
-
-
-    <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">-->
-        <!--<property name="messageConverters">-->
-            <!--<list>-->
-                <!--&lt;!&ndash;json转换器&ndash;&gt;-->
-                <!--<ref bean="mappingJacksonHttpMessageConverter" />-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
-    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">-->
-        <!--<property name="messageConverters">-->
-            <!--<list>-->
-                <!--<ref bean="mappingJacksonHttpMessageConverter" />-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
-
-    <!--<bean id="mappingJacksonHttpMessageConverter"-->
-          <!--class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
-        <!--<property name = "supportedMediaTypes">-->
-            <!--<list>-->
-                <!--<bean class="org.springframework.http.MediaType">-->
-                    <!--<constructor-arg index="0" value="text"/>-->
-                    <!--<constructor-arg index="1" value="plain"/>-->
-                    <!--<constructor-arg index="2" value="UTF-8"/>-->
-                <!--</bean>-->
-                <!--<bean class="org.springframework.http.MediaType">-->
-                    <!--<constructor-arg index="0" value="*"/>-->
-                    <!--<constructor-arg index="1" value="*"/>-->
-                    <!--<constructor-arg index="2" value="UTF-8"/>-->
-                <!--</bean>-->
-                <!--<bean class="org.springframework.http.MediaType">-->
-                    <!--<constructor-arg index="0" value="text"/>-->
-                    <!--<constructor-arg index="1" value="*"/>-->
-                    <!--<constructor-arg index="2" value="UTF-8"/>-->
-                <!--</bean>-->
-                <!--<bean class="org.springframework.http.MediaType">-->
-                    <!--<constructor-arg index="0" value="application"/>-->
-                    <!--<constructor-arg index="1" value="json"/>-->
-                    <!--<constructor-arg index="2" value="UTF-8"/>-->
-                <!--</bean>-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
-
-
-
 
     <!--静态资源映射-->
     <!--本项目把静态资源放在了webapp的statics目录下，资源映射如下-->
@@ -77,6 +28,7 @@
     <mvc:resources mapping="/js/**" location="/WEB-INF/statics/js/"/>
     <mvc:resources mapping="/image/**" location="/WEB-INF/statics/image/"/>
     <mvc:resources mapping="/cert/**" location="/WEB-INF/statics/cert/"/>
+
 
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->
     <!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->

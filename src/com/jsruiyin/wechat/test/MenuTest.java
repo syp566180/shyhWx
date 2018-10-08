@@ -6,6 +6,7 @@
 package com.jsruiyin.wechat.test;
 
 import com.jsruiyin.wechat.function.menu.dao.MenuDao;
+import com.jsruiyin.wechat.utils.PropertyUtil;
 import com.jsruiyin.wechat.utils.WeixinUtil;
 import redis.clients.jedis.Jedis;
 
@@ -14,14 +15,11 @@ public class MenuTest {
     }
     //private static String host = "132.232.26.102";
     //private static String password = "123456";
-    private static String host = "139.196.115.139";
-    private static String password = "rycm";
+    private static String host = PropertyUtil.get("host");
+    private static String password = PropertyUtil.get("redisPassword");
     private static int port = 6379;
 
-    //显网
-    private static String accessToken_xw = "accessToken";
-    //测试
-    private static String accessToken_cs = "accessToken_cs";
+    private static String accessToken_cs = PropertyUtil.get("accessTokenRedis");
 
     public static void main(String[] args) {
 

@@ -24,7 +24,7 @@ public class BaseDao {
     public BaseDao() {
     }
 
-    public String NewsCreate(String fromUserName,String toUserName,String param,String Content) {
+    public String  NewsCreate(String fromUserName,String toUserName,String param,String Content) {
         String respXml = null;
         this.newsMessage.setToUserName(fromUserName);
         this.newsMessage.setFromUserName(toUserName);
@@ -34,12 +34,10 @@ public class BaseDao {
         if(param.equals(ParameterUtil.ACTIVITY_KEY)) {
             articleList = this.ArticleListCreate("");
 
-        }else if(Content.equals(ParameterUtil.TTX)){
+        }else if(!Content.equals("")){
             articleList = this.ArticleListCreate(Content);
-        }else {
+        }else{
             Article article = this.ArticleCreate(param);
-            System.out.println("不是我的活动");
-
             articleList.add(article);
         }
         this.newsMessage.setArticleCount(articleList.size());
@@ -50,9 +48,9 @@ public class BaseDao {
     }
 
     public List<Article> ArticleListCreate(String Content){
+
         List<Article> list;
-        if(Content.equals(ParameterUtil.TTX)) {
-            System.out.println("TTX");
+        if(!Content.equals("")) {
             list = articleDao.EventRespMessAgeList(Content);
             return list;
         }

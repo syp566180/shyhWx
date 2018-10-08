@@ -6,6 +6,7 @@
 package com.jsruiyin.wechat.function.menu.dao;
 
 import com.jsruiyin.wechat.function.menu.*;
+import com.jsruiyin.wechat.utils.ConfigUrlUtil;
 import com.jsruiyin.wechat.utils.ParameterUtil;
 
 public class MenuDao {
@@ -52,10 +53,18 @@ public class MenuDao {
         btn33.setType(ParameterUtil.CLICK);
         btn33.setKey(ParameterUtil.ACTIVITY_KEY);
 
+
+//        ViewButton btnGc = new ViewButton();
+//        btnGc.setName("文创大赛");
+//        btnGc.setType(ParameterUtil.VIEW);
+//        btnGc.setUrl("http://jbxqgwh.huhuschool.com/mobile/wechatConnect/wx1a4e3c5b7c5c1619/index");
+//
+
+
         ViewButton btn44 = new ViewButton();
         btn44.setName(ParameterUtil.SOCIAL_SECURITY);
         btn44.setType(ParameterUtil.VIEW);
-        btn44.setUrl(ParameterUtil.SOCIAL_SECURITY_URL);
+        btn44.setUrl(ConfigUrlUtil.SBK_URL);
         CommonButton btn55 = new CommonButton();
         btn55.setName(ParameterUtil.PRIZZE);
         btn55.setType(ParameterUtil.CLICK);
@@ -76,7 +85,7 @@ public class MenuDao {
         mainBtn2.setName(ParameterUtil.PRODUCT_CENTER);
         mainBtn2.setSub_button(new Button[]{btn21, btn22, btn23, btn24, btn25});
         /**
-         * 菜单三
+         * 菜单三 btn33
          */
         ComplexButton mainBtn3 = new ComplexButton();
         mainBtn3.setName(ParameterUtil.MY_BANK);

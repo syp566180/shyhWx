@@ -20,7 +20,10 @@ public class ConfigUrlUtil {
     public static final String CKYW_URL = ParameterUtil.URL_SESSION+ParameterUtil.URL_BANK+ParameterUtil.GN_URL+ParameterUtil.CKYW;
     public static final String LCYW_URL = ParameterUtil.URL_SESSION+ParameterUtil.URL_BANK+ParameterUtil.GN_URL+ParameterUtil.LCYW;
     //社保卡查询路径
-    public static final String SBK_URL = "http://weixin.shnsh.net/shweb/pages/query.html";
+    public static final String SBK_URL =
+            ParameterUtil.URL_SESSION +
+                    ParameterUtil.URL_WX +
+            PropertyUtil.get("SBK_URL");
 
 
 

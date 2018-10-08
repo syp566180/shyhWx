@@ -10,13 +10,11 @@ import com.jsruiyin.wechat.wxpay.pay.UnifiedOrder;
 import com.jsruiyin.wechat.wxpay.sdk.*;
 import com.jsruiyin.wechat.wxpay.sdk.WXPayUtil;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Formatter;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 public class WeixinUtil {
     private static Logger log = LoggerFactory.getLogger(WeixinUtil.class);
@@ -125,6 +123,131 @@ public class WeixinUtil {
         String result = formatter.toString();
         formatter.close();
         return result;
+    }
+
+
+
+
+    /**
+     * 检测是否有emoji字符
+     *
+     * @param source
+     * @return 一旦含有就抛出
+     */
+    public static boolean containsEmoji(String source) {
+        if (StringUtils.isBlank(source)) {
+            return false;
+        }
+        int len = source.length();
+        for (int i = 0; i < len; i++) {
+            char codePoint = source.charAt(i);
+            if (isEmojiCharacter(codePoint)) {
+                //do nothing，判断到了这里表明，确认有表情字符
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isEmojiCharacter(char codePoint) {
+        return (codePoint == 0x0) ||
+                (codePoint == 0x9) ||
+                (codePoint == 0xA) ||
+                (codePoint == 0xD) ||
+                ((codePoint >= 0x20) && (codePoint <= 0xD7FF)) ||
+                ((codePoint >= 0xE000) && (codePoint <= 0xFFFD)) ||
+                ((codePoint >= 0x10000) && (codePoint <= 0x10FFFF));
+    }
+
+    /**
+     * 过滤emoji 或者 其他非文字类型的字符
+     *
+     * @param source
+     * @return
+     */
+    public static String filterEmoji(String source) {
+        source = source.replaceAll("[\\ud800\\udc00-\\udbff\\udfff\\ud800-\\udfff]", "*");
+        if (!containsEmoji(source)) {
+            return source;//如果不包含，直接返回
+        }
+        //到这里铁定包含
+        StringBuilder buf = null;
+
+        int len = source.length();
+
+        for (int i = 0; i < len; i++) {
+            char codePoint = source.charAt(i);
+
+            if (isEmojiCharacter(codePoint)) {
+                if (buf == null) {
+                    buf = new StringBuilder(source.length());
+                }
+
+                buf.append(codePoint);
+            } else {
+                buf.append("*");
+            }
+        }
+
+        if (buf == null) {
+            return source;//如果没有找到 emoji表情，则返回源字符串
+        } else {
+            if (buf.length() == len) {//这里的意义在于尽可能少的toString，因为会重新生成字符串
+                buf = null;
+                return source;
+            } else {
+                return buf.toString();
+            }
+        }
+
+    }
+
+
+    /**
+     * 返回首页方法
+     * @param openId
+     * @return
+     */
+    public static String replaceUrl(String openId){
+        String STATE = "STATE";
+        String url = ParameterUtil.GETACTIVITYURL;
+        url = url.replace("OPENID",openId).
+                replace("NICKNAME","微信用户**").
+                replace("STATE",STATE);
+        return url;
+    }
+
+    /**
+     * 拼接url地址
+     * @param url
+     * @param params
+     * @return
+     */
+    public static String getUrl(String url,JSONObject params){
+        // 向url中添加参数
+		StringBuffer sb = null;
+		if (params != null) {
+			Iterator<String> it = params.keySet().iterator();
+
+			while (it.hasNext()) {
+				String key = it.next();
+				String value = params.getString(key);
+				if (sb == null) {
+					sb = new StringBuffer();
+					sb.append(url);
+					sb.append("?");
+				} else {
+					sb.append("&");
+				}
+				sb.append(key);
+				sb.append("=");
+				sb.append(value);
+			}
+		}
+		if(sb.toString().isEmpty()){
+            sb.append("http://www.baidu.com");
+        }
+		return sb.toString();
     }
 
 }

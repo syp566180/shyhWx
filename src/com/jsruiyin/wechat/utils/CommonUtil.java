@@ -18,7 +18,7 @@ public class CommonUtil {
 
     public static AccessToken getToken() {
         AccessToken token = null;
-        String requestUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="+ParameterUtil.APP_ID+"&secret="+ParameterUtil.APPSECRET;
+        String requestUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="+PropertyUtil.get("APP_ID")+"&secret="+PropertyUtil.get("APPSECRET");
         JSONObject jsonObject = HttpUtil.httpRequest(requestUrl, "GET",null);
         if(null != jsonObject) {
             try {
@@ -27,7 +27,7 @@ public class CommonUtil {
                 token.setExpiresIn(jsonObject.getInt("expires_in"));
             } catch (JSONException var4) {
                 token = null;
-                log.error("获取token失败 errcode:{} errmsg:{}", Integer.valueOf(jsonObject.getInt("errcode")), jsonObject.getString("errmsg"));
+                log.error("获取token失败 errcode11111:{} errmsg:{}", Integer.valueOf(jsonObject.getInt("errcode")), jsonObject.getString("errmsg"));
             }
         }
 
@@ -46,6 +46,7 @@ public class CommonUtil {
         if(null != jsonObject) {
             try {
                 jsApiTicket = jsonObject.getString("ticket");
+                System.out.println("jsApiTicket:_____"+jsApiTicket);
             } catch (JSONException var4) {
                 jsApiTicket = null;
                 log.error("获取token失败 errcode:{} errmsg:{}", Integer.valueOf(jsonObject.getInt("errcode")), jsonObject.getString("errmsg"));

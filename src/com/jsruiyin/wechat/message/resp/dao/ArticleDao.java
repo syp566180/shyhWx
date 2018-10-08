@@ -5,12 +5,11 @@
 
 package com.jsruiyin.wechat.message.resp.dao;
 
-import com.jsruiyin.wechat.controller.WeChatController;
 
 import com.jsruiyin.wechat.message.resp.entiys.Article;
 import com.jsruiyin.wechat.utils.ParameterUtil;
 
-import javax.servlet.http.HttpServletRequest;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,38 +92,82 @@ public class ArticleDao {
         article.setTitle(ParameterUtil.ACTIVITY_1);
         article.setDescription(description);
         article.setPicUrl(ParameterUtil.ACTIVTIY_PIC_URL_1);
-        article.setUrl(ParameterUtil.ACTIVITY_URL_1);
-
-//        article1.setTitle(ParameterUtil.ACTIVITY_0);
-//        article1.setDescription(description);
-//        article1.setPicUrl(ParameterUtil.ACTIVTIY_PIC_URL_0);
-//        article1.setUrl(ParameterUtil.ACTIVITY_URL_0);
-
+        //当前时间
+       // long date = System.currentTimeMillis() / 1000;
+        //活动结束时间
+       // long endDate = 1538582400;
+       // if(date>endDate){
+       //     article.setUrl("https://shwx.huhuschool.com/wx/festival/html/time.html");
+       // }else {
+            article.setUrl(ParameterUtil.ACTIVITY_URL_1);
+       // }
+        //article.setUrl("http://www.syp666.cn");
+        article1.setTitle(ParameterUtil.ACTIVITY_USER_TEXT);
+        article1.setDescription(description);
+        article1.setPicUrl(ParameterUtil.ACTIVITY_PIC_URL);
+        article1.setUrl(ParameterUtil.ACTIVITY_GET_BANK_USER_URL);
+        //article1.setUrl("http://www.syp666.cn");
         list.add(article);
-//        list.add(article1);
+        list.add(article1);
         return list;
     }
 
 
 
-    public List<Article> EventRespMessAgeList(String ttx) {
+    public List<Article> EventRespMessAgeList(String Content) {
         List<Article> list = new ArrayList();
         String description = "";
-
+        int i = 0;
         Article article = new Article();
         Article article1 = new Article();
-        article.setTitle(ParameterUtil.TTX_TEXT);
-        article.setDescription(description);
-        article.setPicUrl(ParameterUtil.TTX_PIC_URL);
-        article.setUrl(ParameterUtil.GET_TTX_URL);
+        String title = "";
+        String Description = "";
+        String PicUrl = "";
+        String Url = "";
+        String title1 = "";
+        String Description1 = "";
+        String PicUrl1 = "";
+        String Url1 = "";
+        if(Content.equals(ParameterUtil.TTX)){
+            i = 1;
+            title = ParameterUtil.TTX_TEXT;
+            Description = description;
+            PicUrl = ParameterUtil.TTX_PIC_URL;
+            Url = ParameterUtil.GET_TTX_URL;
+            title1 = ParameterUtil.BANK_USER_TEXT;
+            Description1 = description;
+            PicUrl1 = ParameterUtil.BANK_PIC_URL;
+            Url1 = ParameterUtil.GET_BANK_USER_URL;
+        }else if(Content.equals(ParameterUtil.CS)){
+            i = 1;
+            title = ParameterUtil.ACTIVITY_1;
+            Description = description;
+            PicUrl = ParameterUtil.ACTIVTIY_PIC_URL_1;
+            Url = ParameterUtil.ACTIVITY_URL_1;
+            title1 = ParameterUtil.ACTIVITY_USER_TEXT;
+            Description1 = description;
+            PicUrl1 = ParameterUtil.ACTIVITY_PIC_URL;
+            Url1 = ParameterUtil.ACTIVITY_GET_BANK_USER_URL;
+        }else{
+            article = TextRespMessAge();
+        }
 
-        article1.setTitle(ParameterUtil.BANK_USER_TEXT);
-        article1.setDescription(description);
-        article1.setPicUrl(ParameterUtil.BANK_PIC_URL);
-        article1.setUrl(ParameterUtil.GET_BANK_USER_URL);
+        if(i==1) {
+            article.setTitle(title);
+            article.setDescription(Description);
+            article.setPicUrl(PicUrl);
+            article.setUrl(Url);
 
-        list.add(article);
-        list.add(article1);
+            article1.setTitle(title1);
+            article1.setDescription(Description1);
+            article1.setPicUrl(PicUrl1);
+            article1.setUrl(Url1);
+
+            list.add(article);
+            list.add(article1);
+        }else {
+            list.add(article);
+        }
         return list;
     }
 
