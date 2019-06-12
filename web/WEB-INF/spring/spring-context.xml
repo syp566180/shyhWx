@@ -10,17 +10,17 @@
 
     <context:annotation-config/>
 
-    <context:component-scan base-package="com.jsruiyin.wechat"/>
+    <context:component-scan base-package="com.xpjz.wechat"/>
 
     <context:property-placeholder location="/WEB-INF/redis/j2cache.properties,/WEB-INF/mysql/resources.properties" />
 
     <import resource="spring-context-redis.xml"/>
 
-    <bean id="baseDao" class="com.jsruiyin.wechat.message.resp.dao.BaseDao"/>
+    <bean id="baseDao" class="com.xpjz.wechat.message.resp.dao.BaseDao"/>
 
-    <bean id="articleDao" class="com.jsruiyin.wechat.message.resp.dao.ArticleDao"/>
+    <bean id="articleDao" class="com.xpjz.wechat.message.resp.dao.ArticleDao"/>
 
-    <bean id="newsMessage" class="com.jsruiyin.wechat.message.resp.NewsMessage"/>
+    <bean id="newsMessage" class="com.xpjz.wechat.message.resp.NewsMessage"/>
 
     <!--<bean id="propertyConfigurer" class="com.hafiz.www.util.PropertyConfigurer">-->
         <!--<property name="ignoreUnresolvablePlaceholders" value="true"/>-->

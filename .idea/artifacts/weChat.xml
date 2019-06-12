@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="weChat">
-    <output-path>$PROJECT_DIR$/out/artifacts/weChat</output-path>
-    <root id="archive" name="weChat.war">
-      <element id="artifact" artifact-name="shyhWx exploded" />
-    </root>
-  </artifact>
-</component>

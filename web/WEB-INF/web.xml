@@ -42,7 +42,7 @@
     <servlet>
         <servlet-name>initServlet</servlet-name>
         <servlet-class>
-            com.jsruiyin.wechat.servlet.InitServlet
+            com.xpjz.wechat.servlet.InitServlet
         </servlet-class>
         <!-- 配置获取access_token所需参数appid和appsecret -->
         <init-param>

@@ -24,7 +24,7 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type="com.jsruiyin.snyh.common.entitys.PageData" alias="pd" />
+        <typeAlias type="com.xpjz.snyh.common.entitys.PageData" alias="pd" />
     </typeAliases>
 
     <plugins>
