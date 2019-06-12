@@ -7,6 +7,7 @@ package com.xpjz.wechat.thread;
 
 import com.xpjz.wechat.entity.AccessToken;
 import com.xpjz.wechat.utils.CommonUtil;
+import com.xpjz.wechat.utils.ParameterUtil;
 import com.xpjz.wechat.utils.PropertyUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,20 +15,14 @@ import redis.clients.jedis.Jedis;
 
 public class TokenThread implements Runnable {
     private static Logger log = LoggerFactory.getLogger(TokenThread.class);
-    public static String appid = "";
-    public static String appsecret = "";
+    public static String appid = ParameterUtil.WxConfig.APP_ID;
+    public static String appsecret = ParameterUtil.WxConfig.APPSECRET;
     public static AccessToken accessToken = null;
-    private static String host = PropertyUtil.get("host");
-    private static String password = PropertyUtil.get("redisPassword");
-    private static int port = 6379;
-    //显网
-    //private static String accessToken_xw = "accessToken";
-    //
-    //public static String jsApiTicket_xw = "jsApiTicket_xw";
-    //测试
-    private static String accessTokenRedis = PropertyUtil.get("accessTokenRedis");
-    //测试
-    public static String jsApiTicketRedis = PropertyUtil.get("jsApiTicketRedis");
+    private static String host = ParameterUtil.WxConfig.REDIS_HOST;
+    private static String password =  ParameterUtil.WxConfig.REDIS_PWD;
+    private static int port = ParameterUtil.WxConfig.REDIS_PORT;
+    private static String accessTokenRedis = ParameterUtil.WxConfig.ACC_TOKEN;
+    public static String jsApiTicketRedis = ParameterUtil.WxConfig.JS_APITICKET;
     public TokenThread() {
     }
 

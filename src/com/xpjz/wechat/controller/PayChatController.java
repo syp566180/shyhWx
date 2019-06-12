@@ -39,10 +39,10 @@ public class PayChatController extends BaseController{
     /**
      * 退款返回
      */
-    @RequestMapping({"/fhindex"})
-    public String fhindex(){
-        return "redirect:" + ParameterUtil.ACTIVITY_URL_1;
-    }
+//    @RequestMapping({"/fhindex"})
+//    public String fhindex(){
+//        return "redirect:" + ParameterUtil.ACTIVITY_URL_1;
+//    }
 
 
     /**

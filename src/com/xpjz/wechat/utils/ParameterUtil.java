@@ -26,6 +26,12 @@ public class ParameterUtil {
             public static String APP_ID = PropertyUtil.get("APP_ID",code_0);
             //APPSECRET
             public static String APPSECRET = PropertyUtil.get("APPSECRET",code_0);
+            //redis
+            public static String REDIS_HOST = PropertyUtil.get("REDIS_HOST",code_0);
+            public static int REDIS_PORT = Integer.valueOf(PropertyUtil.get("REDIS_PORT",code_0));
+            public static String REDIS_PWD = PropertyUtil.get("REDIS_PWD",code_0);
+            public static String ACC_TOKEN = PropertyUtil.get("ACC_TOKEN",code_0);
+            public static String JS_APITICKET = PropertyUtil.get("JS_APITICKET",code_0);
     }
         //菜单参数
         public static class MenuConfig{

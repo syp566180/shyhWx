@@ -6,6 +6,7 @@
 package com.xpjz.wechat.test;
 
 import com.xpjz.wechat.function.menu.dao.MenuDao;
+import com.xpjz.wechat.utils.ParameterUtil;
 import com.xpjz.wechat.utils.PropertyUtil;
 import com.xpjz.wechat.utils.WeixinUtil;
 import redis.clients.jedis.Jedis;
@@ -13,13 +14,10 @@ import redis.clients.jedis.Jedis;
 public class MenuTest {
     public MenuTest() {
     }
-    //private static String host = "132.232.26.102";
-    //private static String password = "123456";
-    private static String host = PropertyUtil.get("host");
-    private static String password = PropertyUtil.get("redisPassword");
-    private static int port = 6379;
-
-    private static String accessToken_cs = PropertyUtil.get("accessTokenRedis");
+    private static String host = ParameterUtil.WxConfig.REDIS_HOST;
+    private static String password = ParameterUtil.WxConfig.REDIS_PWD;
+    private static int port = ParameterUtil.WxConfig.REDIS_PORT;
+    private static String ACC_TOKEN = ParameterUtil.WxConfig.ACC_TOKEN;
 
     public static void main(String[] args) {
 
@@ -28,7 +26,7 @@ public class MenuTest {
 
         try {
             jedis.auth(password);
-            accessToken = jedis.get(accessToken_cs);
+            accessToken = jedis.get(ACC_TOKEN);
             System.out.println("accessToken:"+accessToken);
             jedis.close();
         } catch (Exception var4) {
