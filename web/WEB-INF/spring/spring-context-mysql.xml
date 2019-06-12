@@ -53,9 +53,9 @@
     <!-- 配置mybatis -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="typeAliasesPackage" value="com.jsruiyin.wechat"/>
+        <property name="typeAliasesPackage" value="com.xpjz.wechat"/>
 
-        <!--<property name="typeAliasesSuperType" value="com.jsruiyin.snyh.common.entitys.BaseEntity"/>-->
+        <!--<property name="typeAliasesSuperType" value="com.xpjzh.common.entitys.BaseEntity"/>-->
         <!--<property name="configLocation" value="/WEB-INF/mybatis/mybatis-config.xml" />-->
         <!-- mapper扫描 -->
         <property name="mapperLocations" value="/WEB-INF/mybatis/*/*.xml" />
@@ -64,9 +64,9 @@
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.jsruiyin.wechat"/>
+        <property name="basePackage" value="com.xpjz.wechat"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
-        <property name="annotationClass" value="com.jsruiyin.common.persistence.annotation.MyBatisDao"/>
+        <property name="annotationClass" value="com.xpjz.common.persistence.annotation.MyBatisDao"/>
     </bean>
 
 

@@ -35,5 +35,5 @@
 
 
 
-    <bean id="jedisClientSingle" class="com.jsruiyin.wechat.utils.redis.JedisClientSingle" />
+    <bean id="jedisClientSingle" class="com.xpjz.wechat.utils.redis.JedisClientSingle" />
 </beans>
