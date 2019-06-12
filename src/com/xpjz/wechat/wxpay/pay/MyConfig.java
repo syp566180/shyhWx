@@ -11,15 +11,15 @@ import java.io.*;
 public class MyConfig extends WXPayConfig {
     private byte[] certData;
 
-    public MyConfig() throws Exception {
-        String certPath = CERT_PATH;
-        System.out.println("路径..."+certPath);
-        File file = new File(certPath);
-        InputStream certStream = new FileInputStream(file);
-        this.certData = new byte[(int) file.length()];
-        certStream.read(this.certData);
-        certStream.close();
-    }
+//    public MyConfig() throws Exception {
+//        String certPath = CERT_PATH;
+//        System.out.println("路径..."+certPath);
+//        File file = new File(certPath);
+//        InputStream certStream = new FileInputStream(file);
+//        this.certData = new byte[(int) file.length()];
+//        certStream.read(this.certData);
+//        certStream.close();
+//    }
 
     //我要推荐url
     public String getRecommend(){
@@ -30,15 +30,15 @@ public class MyConfig extends WXPayConfig {
     }
 
     public String getAppID() {
-        return ParameterUtil.APP_ID;
+        return null;
     }
 
     public String getMchID() {
-        return ParameterUtil.BUSINESS_NUMBER;
+        return null;
     }
 
     public String getKey() {
-        return ParameterUtil.API_PASSWORD;
+        return null;
     }
 
 
@@ -62,7 +62,7 @@ public class MyConfig extends WXPayConfig {
     /**微信支付api证书路径*/
     //public static final String CERT_PATH = "/usr/share/nginx/html/apiclient_cert.p12"；
 
-    public static final String CERT_PATH = PropertyUtil.get("CERT_PATH");
+   // public static final String CERT_PATH = PropertyUtil.get("CERT_PATH");
     /**微信统一下单url*/
     public static final String UNIFIED_ORDER_URL = "https://api.mch.weixin.qq.com/pay/unifiedorder";
 

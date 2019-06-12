@@ -24,11 +24,11 @@ public class ShareChatController extends BaseController{
      * 微信分享
      * @return
      */
-    @RequestMapping({"/partake"})
-    @ResponseBody
-    public Map<String,String> partake(String url) throws Exception{
-            return shareChatService.partake(url);
-    }
+//    @RequestMapping({"/partake"})
+//    @ResponseBody
+//    public Map<String,String> partake(String url) throws Exception{
+//            return shareChatService.partake(url);
+//    }
 
 
 

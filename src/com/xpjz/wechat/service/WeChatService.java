@@ -35,8 +35,8 @@ public class WeChatService {
             throws ServletException,IOException,ParseException {
         String code=request.getParameter("code");
         String state= WeixinUtil.generateOrderSN();
-        String url = ConfigUrlUtil.ATUH2_URL+"appid="+ ParameterUtil.APP_ID+
-                "&secret=" +ParameterUtil.APPSECRET+
+        String url = ConfigUrlUtil.ATUH2_URL+"appid="+ ParameterUtil.WxConfig.APP_ID+
+                "&secret=" +ParameterUtil.WxConfig.APPSECRET+
                 "&code=" +code+
                 "&grant_type=authorization_code";
         JSONObject jsonObject = AuthUtil.doGetJson(url);
@@ -61,9 +61,9 @@ public class WeChatService {
         nickname = WeixinUtil.filterEmoji(nickname);
         nickname = URLEncoder.encode(nickname, "UTF-8");//转码
         String requestUrl = "https://shwx.huhuschool.com/wx/festival/html/time.html";
-        url = ParameterUtil.ACTIVITY_ZQHQ.replace("OPENID",openid).
-                replace("NICKNAME",nickname).
-                replace("STATE",state);
+//        url = ParameterUtil.ACTIVITY_ZQHQ.replace("OPENID",openid).
+//                replace("NICKNAME",nickname).
+//                replace("STATE",state);
          long date = System.currentTimeMillis() / 1000;
         //活动结束时间
          long endDate = 1538582400;
@@ -82,7 +82,7 @@ public class WeChatService {
         String code = request.getParameter("code");
         String name = "微信用户***";
         String url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid="
-                +ParameterUtil.APP_ID+ "&secret=" +ParameterUtil.APPSECRET+ "&code=" + code + "&grant_type=authorization_code";
+                +ParameterUtil.WxConfig.APP_ID+ "&secret=" +ParameterUtil.WxConfig.APPSECRET+ "&code=" + code + "&grant_type=authorization_code";
         JSONObject jsonObject = AuthUtil.doGetJson(url);
         if(jsonObject == null || jsonObject.getInteger("errcode") != null || jsonObject.getString("openid") == null) {
             //这里需要抛异常 如果返回值没有 或者 出现错误返回errcode 或者 没有拿到openid

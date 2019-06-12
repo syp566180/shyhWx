@@ -5,6 +5,10 @@
 
 package com.xpjz.wechat.message.resp;
 
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class TextMessage extends BaseMessage {
     private String Content;
 

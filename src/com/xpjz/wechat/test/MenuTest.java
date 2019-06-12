@@ -15,11 +15,11 @@ public class MenuTest {
     }
     //private static String host = "132.232.26.102";
     //private static String password = "123456";
-    private static String host = PropertyUtil.get("host");
-    private static String password = PropertyUtil.get("redisPassword");
+    private static String host = "132.232.26.102";
+    private static String password = "xpjz001";
     private static int port = 6379;
 
-    private static String accessToken_cs = PropertyUtil.get("accessTokenRedis");
+    private static String ACC_TOKEN = "accessToken";
 
     public static void main(String[] args) {
 
@@ -28,7 +28,7 @@ public class MenuTest {
 
         try {
             jedis.auth(password);
-            accessToken = jedis.get(accessToken_cs);
+            accessToken = jedis.get(ACC_TOKEN);
             System.out.println("accessToken:"+accessToken);
             jedis.close();
         } catch (Exception var4) {

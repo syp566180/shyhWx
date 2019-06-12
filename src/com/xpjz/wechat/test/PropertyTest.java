@@ -8,14 +8,14 @@ public class PropertyTest {
        // System.out.println("第一个方法    "+propertyUtil.get("EQUAL_SIGN"));
 
 
-        String ACTIVITY_URL =
-                PropertyUtil.get("URL_SESSION") +
-                PropertyUtil.get("URL_WX") +
-                PropertyUtil.get("URL_PAYMENT") +
-                PropertyUtil.get("CREATE_CARD") +
-                PropertyUtil.get("QUESTION_MARK") +
-                PropertyUtil.get("PARAMETER_OPENID") + "=";
-        System.out.println("第一个方法    "+ACTIVITY_URL);
+//        String ACTIVITY_URL =
+//                PropertyUtil.get("URL_SESSION") +
+//                PropertyUtil.get("URL_WX") +
+//                PropertyUtil.get("URL_PAYMENT") +
+//                PropertyUtil.get("CREATE_CARD") +
+//                PropertyUtil.get("QUESTION_MARK") +
+//                PropertyUtil.get("PARAMETER_OPENID") + "=";
+//        System.out.println("第一个方法    "+ACTIVITY_URL);
 //        System.out.println("第二个方法    "+propertyUtil.readValue(true,"URL_SESSION"));
 //        Properties prop = new Properties();
 //        try{

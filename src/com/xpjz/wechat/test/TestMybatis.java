@@ -45,15 +45,15 @@ public class TestMybatis {
 //        System.out.println(a);//{"c":"d","a":"b"}System.out.println(a.get("c"));//d}
 
         String bankCode = "JS";
-        if(!bankCode.equals(PayUtil.JSNX_CREDIT)&&!bankCode.equals(PayUtil.JSNX_DEBIT)){
-            String url = ParameterUtil.URL_SESSION +
-                    ParameterUtil.URL_WEB +
-                    ParameterUtil.REFUND_URL +
-                    "?outTradeNo="+1+"&money="+1+"&st=c&openId="+1;
-           System.out.println(url);
-        }else {
-            System.out.println(1);
-        }
+//        if(!bankCode.equals(PayUtil.JSNX_CREDIT)&&!bankCode.equals(PayUtil.JSNX_DEBIT)){
+//            String url = ParameterUtil.URL_SESSION +
+//                    ParameterUtil.URL_WEB +
+//                    ParameterUtil.REFUND_URL +
+//                    "?outTradeNo="+1+"&money="+1+"&st=c&openId="+1;
+//           System.out.println(url);
+//        }else {
+//            System.out.println(1);
+//        }
 
 
         System.out.println(System.currentTimeMillis() / 1000);

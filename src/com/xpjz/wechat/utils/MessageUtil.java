@@ -124,4 +124,10 @@ public class MessageUtil {
         xstream.alias("item", Article.class);
         return xstream.toXML(newsMessage);
     }
+
+
+
+
+
+
 }
