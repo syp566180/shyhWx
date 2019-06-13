@@ -54,8 +54,8 @@ public class ShWeChatService {
             System.out.println(requestMap);
             if(msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
                 //文本内容 TTX
-                String Content = requestMap.get("Content");
-                respXml = baseDao.NewsCreate(fromUserName, toUserName,msgType,"",Content);
+                respXml = baseDao.NewsCreate(fromUserName, toUserName,msgType,"","");
+                log.info(respXml);
                 return respXml;
             }
 
@@ -77,7 +77,7 @@ public class ShWeChatService {
                     respContent = "谢谢您的关注！";
                 } else if(eventType.equals(MessageUtil.EVENT_TYPE_CLICK)) {
                     String eventKey = requestMap.get("EventKey");
-                    respXml = baseDao.NewsCreate(fromUserName, toUserName,eventType,eventKey,"");
+                    respXml = baseDao.NewsCreate(fromUserName, toUserName,msgType,eventType,eventKey);
                     log.info(respXml);
                     return respXml;
                 }

@@ -19,7 +19,7 @@ public class MenuTest {
     private static String password = "xpjz001";
     private static int port = 6379;
 
-    private static String ACC_TOKEN = "accessToken";
+    private static String ACC_TOKEN = "accessTokenRedis";
 
     public static void main(String[] args) {
 
