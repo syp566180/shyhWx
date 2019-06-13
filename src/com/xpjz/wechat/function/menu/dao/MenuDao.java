@@ -16,7 +16,7 @@ public class MenuDao {
 
     public static Menu getMenu() {
 
-        String CLICK = MessageUtil.EVENT_TYPE_CLICK;
+        String CLICK = MessageUtil.EVENT_TYPE_CLICK_X;
 
         CommonButton btn11 = new CommonButton();
         btn11.setName(ParameterUtil.MenuConfig.mainBtn1_0_value);
@@ -62,13 +62,13 @@ public class MenuDao {
          * 菜单二
          */
         ComplexButton mainBtn2 = new ComplexButton();
-        mainBtn1.setName(ParameterUtil.MenuConfig.mainBtn3);
+        mainBtn2.setName(ParameterUtil.MenuConfig.mainBtn2);
         mainBtn2.setSub_button(new Button[]{btn21,btn22,btn23});
         /**
          * 菜单三 btn33
          */
         ComplexButton mainBtn3 = new ComplexButton();
-        mainBtn1.setName(ParameterUtil.MenuConfig.mainBtn2);
+        mainBtn3.setName(ParameterUtil.MenuConfig.mainBtn3);
         mainBtn3.setSub_button(new Button[]{btn31,btn32});
 
         /**

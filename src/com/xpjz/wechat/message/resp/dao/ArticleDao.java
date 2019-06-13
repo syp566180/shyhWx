@@ -32,6 +32,7 @@ public class ArticleDao {
         Article article = new Article();
         String description = "";     //图文消息描述
         Map<String, List<String>> map = ParameterUtil.getNewMessage();
+        System.out.println("菜单按钮信息："+map.toString());
         List<String> list = map.get(key);
         article.setTitle(list.get(0));
         article.setDescription(description);

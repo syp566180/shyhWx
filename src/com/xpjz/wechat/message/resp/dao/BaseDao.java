@@ -11,6 +11,8 @@ import com.xpjz.wechat.message.resp.entiys.Article;
 import com.xpjz.wechat.utils.MessageUtil;
 import com.xpjz.wechat.utils.ParameterUtil;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -18,6 +20,9 @@ import java.util.Date;
 import java.util.List;
 
 public class BaseDao {
+
+    private static Logger log = LoggerFactory.getLogger(BaseDao.class);
+
     @Autowired
     private NewsMessage newsMessage;
     @Autowired
@@ -34,17 +39,19 @@ public class BaseDao {
      * @param toUserName        接收方微信号
      * @param msgType           消息类型
      * @param key               点击菜单key
-     * @param Content          文本消息内容
+     * @param eventType         菜单类型
      * @return
      */
-    public String  NewsCreate(String fromUserName,String toUserName,String msgType,String key,String Content) {
-        String respXml;
+    public String  NewsCreate(String fromUserName,String toUserName,String msgType,String eventType,String key) {
         //param  消息类型
         //文本text
+        log.info("消息类型:"+msgType);
+        log.info("点击菜单key:"+key);
         if(MessageUtil.REQ_MESSAGE_TYPE_TEXT.equals(msgType)){
             textMessage.setToUserName(fromUserName);
             textMessage.setFromUserName(toUserName);
             textMessage.setCreateTime((new Date()).getTime());
+            textMessage.setContent("您输入的是文本信息");
             textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
             return TextMessage(textMessage);
         }else if(MessageUtil.REQ_MESSAGE_TYPE_EVENT.equals(msgType)){
@@ -81,7 +88,9 @@ public class BaseDao {
 
 
     private String TextMessage(TextMessage textMessage){
-        return MessageUtil.messageToXml(textMessage);
+        String repXml = MessageUtil.messageToXml(textMessage);
+        log.info("文本回复内容："+repXml);
+        return repXml;
     }
 
     private String NewMessage(@NotNull NewsMessage newsMessage, String key){
@@ -90,7 +99,9 @@ public class BaseDao {
                  articleList.add(article);
                 newsMessage.setArticleCount(articleList.size());
                 newsMessage.setArticles(articleList);
-        return MessageUtil.messageToXml(newsMessage);
+                String repXml = MessageUtil.messageToXml(newsMessage);
+                log.info("点击菜单响应内容："+repXml);
+            return repXml;
     }
 
 
