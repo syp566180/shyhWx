@@ -6,9 +6,12 @@
 package com.xpjz.wechat.message.resp;
 
 import com.xpjz.wechat.message.resp.entiys.Article;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+
+@Component
 public class NewsMessage extends BaseMessage {
     private int ArticleCount;
     private List<Article> Articles;

@@ -74,7 +74,9 @@ public class ShWeChatService {
             } else if(msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_EVENT)) {
                 String eventType = requestMap.get("Event");
                 if(eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
-                    respContent = "谢谢您的关注！";
+                    //回复图片消息
+                    respXml = baseDao.ImageMessage(fromUserName, toUserName);
+                    return respXml;
                 } else if(eventType.equals(MessageUtil.EVENT_TYPE_CLICK)) {
                     String eventKey = requestMap.get("EventKey");
                     respXml = baseDao.NewsCreate(fromUserName, toUserName,msgType,eventType,eventKey);

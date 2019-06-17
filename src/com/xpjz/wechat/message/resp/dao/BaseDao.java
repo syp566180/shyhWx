@@ -5,11 +5,13 @@
 
 package com.xpjz.wechat.message.resp.dao;
 
+import com.xpjz.wechat.message.resp.ImageMessage;
 import com.xpjz.wechat.message.resp.NewsMessage;
 import com.xpjz.wechat.message.resp.TextMessage;
 import com.xpjz.wechat.message.resp.entiys.Article;
+import com.xpjz.wechat.message.resp.entiys.Image;
 import com.xpjz.wechat.utils.MessageUtil;
-import com.xpjz.wechat.utils.ParameterUtil;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +31,10 @@ public class BaseDao {
     private ArticleDao articleDao;
     @Autowired
     private TextMessage textMessage;
+    @Autowired
+    private ImageMessage imageMessage;
+
+
 
     public BaseDao() {
     }
@@ -58,7 +64,7 @@ public class BaseDao {
             newsMessage.setToUserName(fromUserName);
             newsMessage.setFromUserName(toUserName);
             newsMessage.setCreateTime((new Date()).getTime());
-            return NewMessage(newsMessage,key);
+            return NewMessage(newsMessage,eventType,key);
         }
 
     return null;
@@ -93,7 +99,10 @@ public class BaseDao {
         return repXml;
     }
 
-    private String NewMessage(@NotNull NewsMessage newsMessage, String key){
+    private String NewMessage(@NotNull NewsMessage newsMessage,String eventType,String key){
+                if(MessageUtil.EVENT_TYPE_CLICK.equals(eventType)){
+                    newsMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_NEWS);
+                }
                  List<Article> articleList = new ArrayList();
                  Article article = this.ArticleCreate(key);
                  articleList.add(article);
@@ -104,6 +113,20 @@ public class BaseDao {
             return repXml;
     }
 
+
+    @Contract(pure = true)
+    public String ImageMessage(String fromUserName, String toUserName){
+                imageMessage.setToUserName(fromUserName);
+                imageMessage.setFromUserName(toUserName);
+                imageMessage.setCreateTime(new Date().getTime());
+                Image image = new Image();
+                image.setMediaId("HfGX3gwchAAjOopjrzJLR1L57CNM2Pb30LO5ud84zuo");
+                imageMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_IMAGE);
+                imageMessage.setImage(image);
+                String repXml = MessageUtil.messageToXml(imageMessage);
+                log.info("图片消息回复："+repXml);
+                return repXml;
+    }
 
 
 

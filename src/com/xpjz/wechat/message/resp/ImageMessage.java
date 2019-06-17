@@ -6,7 +6,10 @@
 package com.xpjz.wechat.message.resp;
 
 import com.xpjz.wechat.message.resp.entiys.Image;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class ImageMessage extends BaseMessage {
     private Image Image;
 

@@ -13,7 +13,8 @@
         <init-param>
             <!--配置dispatcher.xml作为mvc的配置文件-->
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/spring/dispatcher-servlet.xml</param-value>
+            <param-value>/WEB-INF/spring/spring-context.xml</param-value>
+            <!--<param-value>/WEB-INF/spring/dispatcher-servlet.xml</param-value>-->
         </init-param>
         <load-on-startup>0</load-on-startup>
         <async-supported>true</async-supported>
@@ -23,10 +24,10 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     <!--把applicationContext.xml加入到配置文件中-->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring/spring-context.xml</param-value>
-    </context-param>
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>/WEB-INF/spring/spring-context.xml</param-value>-->
+    <!--</context-param>-->
     <!--spring监听器-->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

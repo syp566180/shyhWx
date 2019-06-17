@@ -5,6 +5,10 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         ">
 
+
+    <context:property-placeholder location="/WEB-INF/redis/j2cache.properties"/>
+
+
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <!--最大连接数-->
         <property name="maxTotal" value="${redis.maxTotal}" />
